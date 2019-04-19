@@ -13,6 +13,7 @@
 //     3.1 var gifArray =[]; user input .val() to be .push()'d to array
 //     3.2 for loop gifArray to create buttons
 //     3.3 buttons .appended to top of the HTML (based on the HTML Layout)
+//     3.4 on submit, clear input field
 
 // 4.0 button functionality
 //     4.1 button click .empty()'s html gif display area 
@@ -29,3 +30,43 @@
 //document.ready
 
 var apiKey = "Ul7ntbONsk4eCTISBH1xjVns9Ng61MN9";
+var gifArray = [];
+var queryURL =  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    ____ + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+$('#addGif').on("click", function (event) {
+    event.preventDefault();
+
+    console.log(this)
+
+    var input = $('#gifInput').val().trim();
+    console.log(input)
+
+    gifArray.push(input);
+    console.log(gifArray)
+
+    generateButtons();
+
+    $('#gifInput').empty();
+
+});
+
+function generateButtons() {
+    $('#gifButtons').empty();
+
+    for (var i = 0; i < gifArray.length; i++) {
+        var button = $('<button>').text(gifArray[i]).attr("data-gif", gifArray[i]);
+        $('#gifButtons').append(button);
+    }
+    $('#gifInput').empty();
+}
+
+
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (response) {
+    console.log(response)
+
+}

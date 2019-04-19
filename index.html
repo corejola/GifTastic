@@ -6,9 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gif Tastic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type=text/css href="assets/css/style.css">
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <div id="gifButtons"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div id="gifView"></div>
+            </div>
+
+            <div class="col-md-4">
+                <form id="gifForm">
+                    <label for="gifInput">Add a Gif</label>
+                    <input type="text" id="gifInput">
+                    <button id="addGif">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
 </body>
