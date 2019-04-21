@@ -1,9 +1,9 @@
 body {
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Metal Mania', cursive;
     color: antiquewhite;
     background-color: black;    
 }
-.gif {
+.gif, .submit {
 margin: 5px;
 padding: 5px;
 color:goldenrod;
