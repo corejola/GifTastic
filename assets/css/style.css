@@ -1,5 +1,18 @@
-button {
-margin: auto;
-/* background-color: aqua; */
+body {
+    font-family: 'Dosis', sans-serif;
+    color: antiquewhite;
+    background-color: black;    
+}
+.gif {
+margin: 5px;
+padding: 5px;
+color:goldenrod;
+background-color:  black
 
+}
+
+.float-left {
+    border-width: 2px;
+    border-color: antiquewhite;
+    margin: 5px;
 }

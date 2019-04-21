@@ -25,13 +25,11 @@
 //     5.1 click on a gif to activiate a gif
 //     5.2 click on gif again deactivate giv
 
-// 6.0 
-
 //document.ready function
 $(document).ready(function () {
 });
 
-var gifArray = [];
+var gifArray = ["slayer", "judas priest", "thrash metal", "death metal"];
 
 $('#addGif').on("click", function (event) {
     event.preventDefault();
@@ -57,10 +55,9 @@ function generateButtons() {
         button.attr("class", "gif");
         $('#gifButtons').append(button);
     }
-
 }
 // button makes ajax call
-//use document.on to call on elements created
+//use document.on to call on elements created by javascript
 $(document).on("click", ".gif", function () {
     // clear gif area
     $('#gifView').empty();
@@ -79,12 +76,13 @@ $(document).on("click", ".gif", function () {
 
         for (var i = 0; i < gifData.length; i++) {
             var gifView = $('<div>');
+            gifView.attr("class", "float-left")
             var rating = gifData[i].rating;
             // console.log(rating)
 
             var p = $("<p>").text("Gif Rating: " + rating);
             var gifImage = $("<img>");
-
+            //set up gif attribute state parameter - still/animate
             gifImage.attr({
                 "class": "gifState",
                 "src": gifData[i].images.fixed_height_still.url,
@@ -112,4 +110,6 @@ $(document).on("click", ".gifState", function () {
         $(this).attr("data-state", "still")
     }
 });
+
+generateButtons();
 
