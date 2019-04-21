@@ -44,7 +44,7 @@ $('#addGif').on("click", function (event) {
     generateButtons();
 
     $('#gifInput').val("");
-    // $('#gifForm').reset(); // follow up question to phil
+
 });
 
 function generateButtons() {
