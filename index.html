@@ -14,25 +14,28 @@
 <body>
     <div class="container">
         <div class="row">
+
             <div id="gifButtons"></div>
         </div>
 
-        <div class="row">
+        <div class="row flex-container">
             <div class="col-md-8">
-                <div id="gifView"></div>
+                <div class="float-left" id="gifView"></div>
             </div>
 
             <div class="col-md-4">
                 <form id="gifForm">
                     <label for="gifInput">Add a Gif</label>
                     <input type="text" id="gifInput">
-                    <button id="addGif">Submit</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="addGif">Submit</button>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+
 </body>
 
 </html>

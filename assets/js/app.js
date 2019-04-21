@@ -27,11 +27,11 @@
 
 // 6.0 
 
-//document.ready
+//document.ready function
+$(document).ready(function () {
+});
 
-var apiKey = "Ul7ntbONsk4eCTISBH1xjVns9Ng61MN9";
 var gifArray = [];
-
 
 $('#addGif').on("click", function (event) {
     event.preventDefault();
@@ -52,7 +52,6 @@ $('#addGif').on("click", function (event) {
 function generateButtons() {
     $('#gifButtons').empty();
 
-
     for (var i = 0; i < gifArray.length; i++) {
         var button = $('<button>').text(gifArray[i]).attr("data-gif", gifArray[i]);
         button.attr("class", "gif");
@@ -62,19 +61,55 @@ function generateButtons() {
 }
 // button makes ajax call
 //use document.on to call on elements created
-$(document).on("click", " .gif", function () {
+$(document).on("click", ".gif", function () {
+    // clear gif area
+    $('#gifView').empty();
 
     var input = $(this).attr("data-gif")
-    console.log(input)
+    // console.log(input)
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        input + "&api_key=" + apiKey + "&limit=10";
+        input + "&api_key=Ul7ntbONsk4eCTISBH1xjVns9Ng61MN9&limit=10";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
-    })
+        // console.log(response.data)
+        var gifData = response.data;
 
-})
+        for (var i = 0; i < gifData.length; i++) {
+            var gifView = $('<div>');
+            var rating = gifData[i].rating;
+            // console.log(rating)
+
+            var p = $("<p>").text("Gif Rating: " + rating);
+            var gifImage = $("<img>");
+
+            gifImage.attr({
+                "class": "gifState",
+                "src": gifData[i].images.fixed_height_still.url,
+                "data-animate": gifData[i].images.fixed_height.url,
+                "data-still": gifData[i].images.fixed_height_still.url,
+                "data-state": "still"
+            });
+
+            gifView.prepend(p);
+            gifView.prepend(gifImage);
+            $('#gifView').append(gifView);
+        }
+    });
+});
+
+$(document).on("click", ".gifState", function () {
+    var state = $(this).attr("data-state");
+    console.log(state);
+    //"topsy-turvy"
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"))
+        $(this).attr("data-state", "animate")
+    } else {
+        $(this).attr("src", $(this).attr("data-still"))
+        $(this).attr("data-state", "still")
+    }
+});
 
