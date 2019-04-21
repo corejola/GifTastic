@@ -43,7 +43,7 @@ $('#addGif').on("click", function (event) {
 
     generateButtons();
 
-    $('#gifInput').empty();
+    $('#gifInput').val("");
     // $('#gifForm').reset(); // follow up question to phil
 });
 
